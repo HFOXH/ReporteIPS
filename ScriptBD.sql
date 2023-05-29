@@ -15,7 +15,9 @@ Apellidos VARCHAR(50) NOT NULL,
 Genero VARCHAR(1) NOT NULL,
 FechaNacimiento DATE NOT NULL,
 Correo VARCHAR(50) NOT NULL,
-Celular DECIMAL(11) NOT NULL
+Celular DECIMAL(11) NOT NULL,
+UsuarioPaciente VARCHAR(50) NOT NULL,
+PasswordPaciente VARCHAR(MAX) NOT NULL
 );
 
 CREATE TABLE Doctores(

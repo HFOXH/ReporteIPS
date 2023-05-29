@@ -1,0 +1,133 @@
+<div class="container">
+<button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Agregar Nuevo Paciente
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar un Nuevo Paciente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="bg-white p-8 rounded shadow-md w-100">
+                <div class="row">
+                  <form >
+                    <div class="mb-4">
+                      <label for="pacienteId" class="block text-gray-700 font-semibold mb-2">Número de Identificación</label>
+                      <input type="number" id="pacienteId" class="form-control">
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col-md-6">
+                        <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
+                        <input type="text" id="nombres" class="form-control">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
+                        <input type="text" id="apellidos" class="form-control">
+                      </div>
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col-md-6">
+                        <label for="fechaNacimiento" class="block text-gray-700 font-semibold mb-2">Fecha de Nacimiento</label>
+                        <input type="date" id="fechaNacimiento" class="form-control">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="genero" class="block text-gray-700 font-semibold mb-2">Género</label>
+                        <select id="genero" class="form-control">
+                          <option value="M">Masculino</option>
+                          <option value="F">Femenino</option>
+                          <option value="O">Otro</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <label for="correo" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                      <input type="email" id="correo" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                      <label for="celular" class="block text-gray-700 font-semibold mb-2">Celular</label>
+                      <input type="number" id="celular" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Agregar</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<table datatable class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Foo</td>
+        <td>Bar</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Someone</td>
+        <td>Youknow</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Iamout</td>
+        <td>Ofinspiration</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Yoda</td>
+        <td>Skywalker</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Patrick</td>
+        <td>Dupont</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Barack</td>
+        <td>Obama</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>François</td>
+        <td>Holland</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Michel</td>
+        <td>Popo</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Chuck</td>
+        <td>Norris</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Simon</td>
+        <td>Robin</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Louis</td>
+        <td>Lin</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Zelda</td>
+        <td>Link</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

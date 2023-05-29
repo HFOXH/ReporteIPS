@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+.background-inicio{
+    background: -webkit-linear-gradient(to right, #0073ff8a, #00c8ff86), url("./assets/img/img-ips.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0073ff8a, #00c8ff86), url("./assets/img/img-ips.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: none;
+    background-position: center center;
+    background-size: cover;
+}
+.background-iniciop{
+    background: -webkit-linear-gradient(to right, #013370ab, #006effa8), url("./assets/img/medicos.jpg");  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #013370ab, #006effa8), url("./assets/img/medicos.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: none;
+    background-position: center center;
+    background-size: cover;
+}
+.btn-bg-primary{
+    background-color: #0077B6;
+}
+.btn-bg-primary:hover{
+    background-color: #0055b6;
+}
+a{
+    color:#00B4D8;
+}
+@media (max-width:500px){
+    .contenedor-img-nuevop{
+        display:none;
+    }
+    .contenedor-formulario{
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+}
+@media (max-width:400px) {
+    .contenedor-ap1{
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+}

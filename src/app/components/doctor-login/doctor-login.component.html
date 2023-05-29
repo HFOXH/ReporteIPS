@@ -1,0 +1,39 @@
+<div class="p-5 bg-image background-inicio" style="
+        height: 300px;
+        "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Incio de Sesión</h2>
+          <form>
+
+            <!-- Email input -->
+            <div class="input-group mb-4">
+              <span class="input-group-text"><i class="fa-solid fa-user-doctor"></i></span>
+              <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario">
+            </div>
+            <!-- Password input -->
+            <div class="input-group mb-4">
+              <span class="input-group-text" (click)="togglePasswordVisibility()"><i class="fa-solid" [ngClass]="{'fa-lock': !showPassword, 'fa-eye': showPassword}"></i></span>
+              <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Contraseña" [(ngModel)]="password">
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Ingresar
+            </button>
+
+            <!-- Register buttons -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
