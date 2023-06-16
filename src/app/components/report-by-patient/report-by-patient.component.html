@@ -44,7 +44,7 @@
                   </button>
                 </div>
                 <div class="card-body">
-                  <img src="../../../assets/img/radio.jpg" width="100%" alt="">
+                  <img data-bs-toggle="modal" data-bs-target="#modal-ver-img" src="../../../assets/img/radio.jpg" width="100%" alt="">
                 </div>
             </div>
         </div>
@@ -139,3 +139,16 @@
     </div>
 </div>
 </div>
+<!-- Modal para mostrar las imagenes -->
+<div class="modal fade" id="modal-ver-img" tabindex="-1" aria-labelledby="modalImg" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+          <div class="bg-white p-8 rounded shadow-md w-100">
+              <div class="row">
+                  <img src="../../../assets/img/radio.jpg" width="100%" alt="">
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
