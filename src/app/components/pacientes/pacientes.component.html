@@ -1,0 +1,219 @@
+<div class="wrapper d-flex align-items-stretch">
+    <app-menu></app-menu>
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Agregar Nuevo Paciente
+        </button></div>
+        
+        <!-- Modal para agregar paciente-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar un Nuevo Paciente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="bg-white p-8 rounded shadow-md w-100">
+                      <div class="row">
+                        <form [formGroup]="AddPatientForm" (ngSubmit)="addPaciente()">
+                          <div class="mb-4">
+                            <label for="pacienteId" class="block text-gray-700 font-semibold mb-2">Número de Identificación</label>
+                            <input type="number" id="pacienteId" class="form-control" formControlName="inpIdentificacion" maxlength="15">
+                            <div *ngIf="AddPatientForm.get('inpIdentificacion').errors && AddPatientForm.get('inpIdentificacion').dirty">
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpIdentificacion').hasError('required')">Este campo es requerido</p>
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpIdentificacion').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                            </div>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="col-md-6">
+                              <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
+                              <input type="text" id="nombres" class="form-control" formControlName="inpNombres">
+                              <div *ngIf="AddPatientForm.get('inpNombres').errors && AddPatientForm.get('inpNombres').dirty">
+                                <p class="text-danger" *ngIf="AddPatientForm.get('inpNombres').hasError('required')">Este campo es requerido</p>
+                                <p class="text-danger" *ngIf="AddPatientForm.get('inpNombres').hasError('maxlength')">Este campo no puede tener mas de 40 caracteres</p>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
+                              <input type="text" id="apellidos" class="form-control" formControlName="inpApellidos">
+                              <div *ngIf="AddPatientForm.get('inpApellidos').errors && AddPatientForm.get('inpApellidos').dirty">
+                                <p class="text-danger" *ngIf="AddPatientForm.get('inpApellidos').hasError('required')">Este campo es requerido</p>
+                                <p class="text-danger" *ngIf="AddPatientForm.get('inpApellidos').hasError('maxlength')">Este campo no puede tener mas de 40 caracteres</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="col-md-6">
+                              <label for="fechaNacimiento" class="block text-gray-700 font-semibold mb-2">Fecha de Nacimiento</label>
+                              <input type="date" id="fechaNacimiento" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="genero" class="block text-gray-700 font-semibold mb-2">Género</label>
+                              <select id="genero" class="form-control">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="mb-4">
+                            <label for="correo" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                            <input type="email" id="correo" class="form-control" formControlName="inpCorreo">
+                            <div *ngIf="AddPatientForm.get('inpCorreo').errors && AddPatientForm.get('inpCorreo').dirty">
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpCorreo').hasError('required')">Este campo es requerido</p>
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpCorreo').hasError('email')">Por favor, ingrese un correo electronico valido</p>
+                            </div>
+                          </div>
+                          <div class="mb-4">
+                            <label for="celular" class="block text-gray-700 font-semibold mb-2">Celular</label>
+                            <input type="number" id="celular" class="form-control" formControlName="inpCelular">
+                            <div *ngIf="AddPatientForm.get('inpCelular').errors && AddPatientForm.get('inpCelular').dirty">
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpCelular').hasError('required')">Este campo es requerido</p>
+                              <p class="text-danger" *ngIf="AddPatientForm.get('inpCelular').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-primary w-100" [disabled]="AddPatientForm.invalid">Agregar</button>
+                        </form>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--------- Modal para Editar---------->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Paciente</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div class="bg-white p-8 rounded shadow-md w-100">
+                      <div class="row">
+                        <form [formGroup]="EditPatientForm" (ngSubmit)="editarPaciente(1)"><!-- recuerda quitar el 1 y poner el id del paciente {{paciente.id}}-->
+                          <div class="mb-4">
+                            <label for="pacienteId" class="block text-gray-700 font-semibold mb-2">Número de Identificación</label>
+                            <input type="number" id="pacienteId" class="form-control" formControlName="inpIdentificacion" maxlength="15" disable>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="col-md-6">
+                              <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
+                              <input type="text" id="nombres" class="form-control" formControlName="inpNombres">
+                              <div *ngIf="EditPatientForm.get('inpNombres').errors && EditPatientForm.get('inpNombres').dirty">
+                                <p class="text-danger" *ngIf="EditPatientForm.get('inpNombres').hasError('required')">Este campo es requerido</p>
+                                <p class="text-danger" *ngIf="EditPatientForm.get('inpNombres').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
+                              <input type="text" id="apellidos" class="form-control" formControlName="inpApellidos">
+                              <div *ngIf="EditPatientForm.get('inpApellidos').errors && EditPatientForm.get('inpApellidos').dirty">
+                                <p class="text-danger" *ngIf="EditPatientForm.get('inpApellidos').hasError('required')">Este campo es requerido</p>
+                                <p class="text-danger" *ngIf="EditPatientForm.get('inpApellidos').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="col-md-6">
+                              <label for="fechaNacimiento" class="block text-gray-700 font-semibold mb-2">Fecha de Nacimiento</label>
+                              <input type="date" id="fechaNacimiento" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                              <label for="genero" class="block text-gray-700 font-semibold mb-2">Género</label>
+                              <select id="genero" class="form-control">
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="mb-4">
+                            <label for="correo" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                            <input type="email" id="correo" class="form-control" formControlName="inpCorreo">
+                            <div *ngIf="EditPatientForm.get('inpCorreo').errors && EditPatientForm.get('inpCorreo').dirty">
+                              <p class="text-danger" *ngIf="EditPatientForm.get('inpCorreo').hasError('required')">Este campo es requerido</p>
+                              <p class="text-danger" *ngIf="EditPatientForm.get('inpCorreo').hasError('email')">Por favor, ingrese un correo electronico valido</p>
+                            </div>
+                          </div>
+                          <div class="mb-4">
+                            <label for="celular" class="block text-gray-700 font-semibold mb-2">Celular</label>
+                            <input type="number" id="celular" class="form-control" formControlName="inpCelular">
+                            <div *ngIf="EditPatientForm.get('inpCelular').errors && EditPatientForm.get('inpCelular').dirty">
+                              <p class="text-danger" *ngIf="EditPatientForm.get('inpCelular').hasError('required')">Este campo es requerido</p>
+                              <p class="text-danger" *ngIf="EditPatientForm.get('inpCelular').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-warning w-100" [disabled]="EditPatientForm.invalid"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Actualizar</button>
+                        </form>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <table datatable class="row-border hover">
+          <thead style="background-color: #044bb3; color:#FFF; border-radius: 20px !important;">
+            <tr>
+              <th>ID</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Genero</th>
+              <th>Correo</th>
+              <th>Celular</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>laura</td>
+              <td>guadalupe</td>
+              <td>femenino</td>
+              <td>radiografia de brazo</td>
+              <td>18/02/2023</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" title="Editar" data-bs-toggle="modal" data-bs-target="#editModal"
+                (click)="editarPaciente(3)">
+                <!-- <button type="button" class="btn btn-warning btn-sm" title="Editar"
+                data-mdb-toggle="modal"
+                data-mdb-target="#editModal" data-mdb-whatever="@mdo" ng-change="change($event)"
+                (click)="editarPaciente(Paciente.coloresId)"> -->
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>&nbsp;
+                <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>santiago</td>
+              <td>vargas</td>
+              <td>masculino</td>
+              <td>radiografia de brazo</td>
+              <td>18/02/2023</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" title="Editar" data-bs-toggle="modal" data-bs-target="#editModal"
+                (click)="editarPaciente(3)">
+                <!-- <button type="button" class="btn btn-warning btn-sm" title="Editar"
+                data-mdb-toggle="modal"
+                data-mdb-target="#editModal" data-mdb-whatever="@mdo" ng-change="change($event)"
+                (click)="editarFondo(Paciente.coloresId)"> -->
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>&nbsp;
+                <!-- <button type="button" class="btn btn-info btn-sm" title="Ver paciente">
+                  <i class="fa-solid fa-eye"></i>
+                </button>&nbsp; -->
+                <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    </div>
+    

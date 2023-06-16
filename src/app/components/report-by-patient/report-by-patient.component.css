@@ -1,0 +1,8 @@
+
+@media (max-width: 991.98px) {
+    #radiografias{
+        .col-3{
+            width: 100% !important;
+        }
+    }
+}

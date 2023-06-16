@@ -1,0 +1,34 @@
+
+@media (max-width: 991.98px) {
+    #sidebarCollapse span {
+      display: none; } }
+  
+  #content {
+    width: 100%;
+    padding: 0;
+    min-height: 100vh;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s; }
+    .full-width-image {
+        width: 100%;
+        height: auto;
+    }
+    .full-width-image {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+    
+    .image-container:hover .full-width-image {
+        transform: scale(1.1);
+    }
+    .logout-button {
+        /* Estilos del botón */
+        transition: background-color 0.5s ease;
+    }
+    
+    .logout-button:hover {
+        color:#fff !important;
+        background-color: #cc0000;
+    }

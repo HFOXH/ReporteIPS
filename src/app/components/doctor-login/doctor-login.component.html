@@ -13,21 +13,21 @@
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5">Incio de Sesión</h2>
-          <form>
+          <form [formGroup]="loginForm">
 
             <!-- Email input -->
             <div class="input-group mb-4">
               <span class="input-group-text"><i class="fa-solid fa-user-doctor"></i></span>
-              <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario">
+              <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" formControlName="user">
             </div>
             <!-- Password input -->
             <div class="input-group mb-4">
               <span class="input-group-text" (click)="togglePasswordVisibility()"><i class="fa-solid" [ngClass]="{'fa-lock': !showPassword, 'fa-eye': showPassword}"></i></span>
-              <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Contraseña" [(ngModel)]="password">
+              <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" placeholder="Contraseña" formControlName="password">
             </div>
             
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">
+            <button type="submit" class="btn btn-primary btn-block mb-4" (click)="LogIn()">
               Ingresar
             </button>
 

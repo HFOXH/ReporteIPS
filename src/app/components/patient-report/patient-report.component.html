@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-3">
+            <label for="nombres" class="block text-gray-700 font-semibold mb-2">Identificación</label>
+            <input type="text" id="nombres" class="form-control" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                  <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
+                  <input type="text" id="nombres" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
+                  <input type="text" id="apellidos" class="form-control" disabled>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-start">
+        <p><b>Fecha de Reporte: </b> 04/04/2023</p>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-success pb-md-2" (click)="download()"><b>Descargar Todo</b></button>
+    </div>
+    
+    <h3 class="text-center mb-4">Reporte del Paciente</h3>
+    <div class="card">
+        <div class="card-body">
+            <p>Aqui va a aparecer la previsualización del PDF</p>
+        </div>
+    </div>
+    <br>
+    <h3 class="text-center mb-4">Radiografias</h3>
+    <div class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <img src="../../../assets/img/radio.jpg" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 2</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

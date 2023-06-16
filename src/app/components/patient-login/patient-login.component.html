@@ -1,3 +1,16 @@
+<div class="area">
+  <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 <div class="container py-5 h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-xl-10">
@@ -24,30 +37,59 @@
           <div class="col-lg-6">
             <div class="card-body p-md-5 mx-md-4">
               
-              <form>
+              <form [formGroup]="loginForm">
                 <p>Por favor ingresa tus datos</p>
 
                 <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example11">Usuario</label>
                     <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Phone number or email address" />
+                      placeholder="Ingresa tu usuario o número de celular" formControlName="user"/>
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form2Example22">Contraseña</label>
-                    <input type="password" id="form2Example22" class="form-control" />
+                    <input type="password" id="form2Example22" class="form-control" formControlName="password"/>
                   </div>
 
                 <div class="text-center pt-1 mb-5 pb-1">
-                  <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">
+                  <button class="btn btn-primary" type="button" (click)="LogIn()">
                     Iniciar Sesión
-                  </button><br>
-                  <a class="text-muted" href="#!">¿Has olvidad tu contraseña?</a>
+                  </button><br><br>
+                  <a class="text-muted" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal">¿Has olvidado tu contraseña?</a>
                 </div>
               </form>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal para forgot password-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Olvide mi contraseña</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="bg-white p-8 rounded shadow-md w-100">
+              <div class="row">
+                <form [formGroup]="forgotPForm" (ngSubmit)="Restore()">
+                  <div class="mb-4">
+                    <label for="correo" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                    <input type="email" id="correo" class="form-control" formControlName="inpCorreo">
+                    <div *ngIf="forgotPForm.get('inpCorreo').errors && forgotPForm.get('inpCorreo').dirty">
+                      <p class="text-danger" *ngIf="forgotPForm.get('inpCorreo').hasError('required')">Este campo es requerido</p>
+                      <p class="text-danger" *ngIf="forgotPForm.get('inpCorreo').hasError('email')">Por favor, ingrese un correo electronico valido</p>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100" [disabled]="forgotPForm.invalid">Reestablecer Contraseña</button>
+                </form>
+              </div>
+            </div>
       </div>
     </div>
   </div>

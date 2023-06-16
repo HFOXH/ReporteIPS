@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="../../../assets/img/logo1ips.png" alt="..." height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/mis-reportes">Mis Reportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/config-paciente">Configuración</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/inicio-paciente">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-4">
+    <table datatable class="row-border hover">
+        <thead style="color:#044bb3; border-radius: 20px !important;">
+          <tr>
+            <th>ID</th>
+            <th>NombreReporte</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2</td>
+            <td>radiografia de brazo</td>
+            <td>18/02/2023</td>
+            <td>
+                <button type="button" class="btn btn-info btn-sm" title="Ver el reporte">
+                    <b>Ver Reporte</b>&nbsp;&nbsp;<i class="fa-solid fa-eye"></i>
+                  </button>
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>radiografia de pierna</td>
+            <td>18/02/2023</td>
+            <td>
+              <button type="button" class="btn btn-info btn-sm" title="Ver el reporte">
+                <b>Ver Reporte</b>&nbsp;&nbsp;<i class="fa-solid fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>

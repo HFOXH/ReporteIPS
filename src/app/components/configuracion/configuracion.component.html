@@ -1,0 +1,58 @@
+<div class="wrapper d-flex align-items-stretch">
+    <app-menu></app-menu>
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="row mt-5">
+            <div class="col-xl-6 col-md-5 col-sm-4">
+                <h1 style="font-weight: 700;" >Configuración</h1>
+                <br>
+                <form [formGroup]="dataAdmin">
+                    <div class="card p-4" >
+                        <label class="block text-gray-700 font-semibold mb-2">Número de Identificación</label>
+                        <input type="number" id="doctorId" class="form-control" [disabled]="true" >
+                        <label class="block text-gray-700 font-semibold mb-2">Nombre Completo</label>
+                        <input type="text" id="doctorNombres" class="form-control" formControlName="inpNombre">
+                        <div *ngIf="dataAdmin.get('inpNombre').errors && dataAdmin.get('inpNombre').dirty">
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpNombre').hasError('required')">Este campo es requerido</p>
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpNombre').hasError('maxlength')">Este campo no puede tener mas de 40 caracteres</p>
+                          </div>
+                        <label class="block text-gray-700 font-semibold mb-2">Correo</label>
+                        <input type="text" id="doctorNombres" class="form-control" formControlName="inpCorreo">
+                        <div *ngIf="dataAdmin.get('inpCorreo').errors && dataAdmin.get('inpCorreo').dirty">
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpCorreo').hasError('required')">Este campo es requerido</p>
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpCorreo').hasError('email')">Por favor, ingrese un correo electronico valido</p>
+                        </div>
+                        <label class="block text-gray-700 font-semibold mb-2">Celular</label>
+                        <input type="number" id="doctorId" class="form-control" formControlName="inpCelular">
+                        <div *ngIf="dataAdmin.get('inpCelular').errors && dataAdmin.get('inpCelular').dirty">
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpCelular').hasError('required')">Este campo es requerido</p>
+                            <p class="text-danger" *ngIf="dataAdmin.get('inpCelular').hasError('maxlength')">Este campo no puede tener mas de 15 caracteres</p>
+                          </div>
+                        <br>
+                        <button class="btn btn-primary" (click)="cambioData()">Actualizar Datos</button>
+                    </div>
+                </form>
+                <br>
+                <form [formGroup]="changePassword">
+                    <div class="card p-4">
+                      <h5 class="card-title">Cambio de Contraseña</h5>
+                      <label class="block text-gray-700 font-semibold mb-2">Contraseña antigua</label>
+                      <input type="text" id="doctorNombres" class="form-control" formControlName="CurrentPassword">
+                      <label class="block text-gray-700 font-semibold mb-2">Contraseña nueva</label>
+                      <input type="text" id="doctorNombres" class="form-control" formControlName="NewPassword">
+                      <br>
+                      <div *ngIf="changePassword.hasError('passwordMismatch')">
+                        <p class="text-danger">Las contraseñas no coinciden</p>
+                      </div>
+                      <button class="btn btn-primary" (click)="cambio()">Actualizar Contraseña</button>
+                    </div>
+                  </form>
+            </div>
+            <div class="col-xl-6 col-md-5 col-sm-4 imagen-c">
+                <br><br><br><br><br>
+                <div class="image-container">
+                    <img width="90%" src="../../../assets/img/fotoperfil.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<div class="wrapper d-flex align-items-stretch">
+<app-menu></app-menu>
+<div id="content" class="p-4 p-md-5 pt-5">
+    <div class="row">
+        <div class="col-3">
+            <label for="nombres" class="block text-gray-700 font-semibold mb-2">Identificación</label>
+            <input type="text" id="nombres" class="form-control" disabled>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                  <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
+                  <input type="text" id="nombres" class="form-control" disabled>
+                </div>
+                <div class="col-md-6">
+                  <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
+                  <input type="text" id="apellidos" class="form-control" disabled>
+                </div>
+              </div>
+        </div>
+    </div>
+    <h3 class="text-center mb-4">Reporte del Paciente</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-primary pb-md-2" data-bs-toggle="modal" data-bs-target="#modal-pdf"><b>Editar</b></button>
+            </div><br>
+            <embed src="../../../assets/img/CV_Ingles_Canada.pdf" type="application/pdf" width="100%" height="600px" />
+        </div>
+    </div>
+    <br>
+    <h3 class="text-center mb-4">Radiografias</h3>
+    <div class="d-flex justify-content-center m-4">
+        <button class="btn btn-primary pb-md-2" data-bs-toggle="modal" data-bs-target="#modal-img"><b>Agregar Imagen</b></button>
+    </div>
+    <div id="radiografias" class="row">
+        <div class="col-3">
+            <div class="card">
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-danger p-1 m-1 rounded-circle" style="width: 33px; height: 33px;" (click)="borrarImage()">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <img src="../../../assets/img/radio.jpg" width="100%" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 2</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p>Aqui va Img Radiografia 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Este espacio es para mostrar las imagenes de la BD -->
+    <!-- <div class="row">
+      <div class="col-3">
+          <div *ngFor="let imagen of Imagenes; let iControl=index" class="card">
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-danger p-1 m-1 rounded-circle" style="width: 33px; height: 33px;" (click)="borrarImage()">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <img src="{{'data:image/png;base64,'+imagen.id}}" width="100%" alt="">
+              </div>
+          </div>
+      </div>
+    </div> -->
+</div>
+<!-- Modal para subir las imagenes -->
+<div class="modal fade" id="modal-img" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Radiografia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="bg-white p-8 rounded shadow-md w-100">
+                <div class="row">
+                  <form >
+                      <input type="number" id="pacienteId" class="form-control" hidden>
+                    <div class="mb-4">
+                        <label for="formFile" class="form-label">Subir Radiografia</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Guardar</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal para editar la información del pdf -->
+<div class="modal fade" id="modal-pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Reporte</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="bg-white p-8 rounded shadow-md w-100">
+                <div class="row">
+                  <form >
+                      <input type="number" id="pacienteId" class="form-control" hidden>
+                      <div class="mb-4">
+                      <div class="form-floating">
+                        <textarea class="form-control" placeholder="Modifica el reporte" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Escribe el reporte</label>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Actualizar</button>
+                  </form>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

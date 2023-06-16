@@ -1,0 +1,36 @@
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar">
+    <div class="custom-menu">
+      <button type="button" id="sidebarCollapse" class="btn btn-primary">
+        <i class="fa fa-bars"></i>
+        <span class="sr-only">Toggle Menu</span>
+      </button>
+    </div>
+    <div class="p-4 pt-5">
+      <img src="../../../assets/img/logo1ips.png" class="logo" alt=""><br><br>
+      <ul class="list-unstyled components mb-5">
+        <li class="active">
+          <a routerLink="/home"  ><i class="fa-solid fa-house"></i>&nbsp;&nbsp;Inicio</a>
+        </li>
+        <li>
+        <!-- <li *ngIf="rol === 'ADMIN'">  Esto solo se muestra para los admins-->
+          <a routerLink="/personal"><i class="fa-solid fa-user-doctor"></i>&nbsp;&nbsp;Personal IPS</a>
+        </li>
+        <li>
+          <a routerLink="/pacientes"><i class="fa-solid fa-users"></i>&nbsp;&nbsp;Pacientes</a>
+        </li> 
+        <li>
+          <a routerLink="/reportes"><i class="fa-solid fa-computer"></i>&nbsp;&nbsp;Reportes</a>
+        </li>
+        <li>
+          <a routerLink="/config"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Configuración</a>
+        </li>
+        <li>
+          <a routerLink="/"><i class="fa-solid fa-right-from-bracket" (click)="GetOut()"></i>&nbsp;&nbsp;Salir</a>
+        </li>
+      </ul>
+      <div class="footer">
+        <p>Copyright &copy; All rights reserved | This system was made with <i class="fa-solid fa-heart"></i></p>
+      </div>
+    </div>
+  </nav>

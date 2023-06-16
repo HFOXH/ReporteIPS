@@ -1,133 +1,162 @@
-<div class="container">
-<button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Nuevo Paciente
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar un Nuevo Paciente</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="bg-white p-8 rounded shadow-md w-100">
-                <div class="row">
-                  <form >
-                    <div class="mb-4">
-                      <label for="pacienteId" class="block text-gray-700 font-semibold mb-2">Número de Identificación</label>
-                      <input type="number" id="pacienteId" class="form-control">
+<div class="wrapper d-flex align-items-stretch">
+  <app-menu></app-menu>
+  <div id="content" class="p-4 p-md-5 pt-5">
+      <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Agregar Nuevo Reporte
+      </button></div>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Agregar un Nuevo Reporte</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="bg-white p-8 rounded shadow-md w-100">
+                    <div class="row">
+                      <form [formGroup]="AddPatientForm" (ngSubmit)="saveData()">
+                        <div class="mb-4">
+                          <label for="correo" class="block text-gray-700 font-semibold mb-2">Nombre del Reporte</label>
+                          <input type="email" id="correo" class="form-control" formControlName="nombreReport">
+                          <div *ngIf="AddPatientForm.get('nombreReport').errors && AddPatientForm.get('nombreReport').dirty">
+                            <p class="text-danger" *ngIf="AddPatientForm.get('nombreReport').hasError('required')">Este campo es requerido</p>
+                          </div>
+                        </div>
+                        <div class="mb-4">
+                          <label for="genero" class="block text-gray-700 font-semibold mb-2">Paciente</label>
+                          <select id="genero" class="form-control" formControlName="paciente">
+                            <option value="M">Paciente 1</option>
+                            <option value="F">Paciente 2</option>
+                            <option value="O">Paciente 3</option>
+                          </select>
+                        </div>
+                        <div class="mb-4">
+                          <label for="correo" class="block text-gray-700 font-semibold mb-2">Descripción de Reporte</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="report"></textarea>
+                          <div *ngIf="AddPatientForm.get('report').errors && AddPatientForm.get('report').dirty">
+                            <p class="text-danger" *ngIf="AddPatientForm.get('report').hasError('required')">Este campo es requerido</p>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="AddPatientForm.invalid">Agregar</button>
+                      </form>
                     </div>
-                    <div class="row mb-4">
-                      <div class="col-md-6">
-                        <label for="nombres" class="block text-gray-700 font-semibold mb-2">Nombres</label>
-                        <input type="text" id="nombres" class="form-control">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="apellidos" class="block text-gray-700 font-semibold mb-2">Apellidos</label>
-                        <input type="text" id="apellidos" class="form-control">
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col-md-6">
-                        <label for="fechaNacimiento" class="block text-gray-700 font-semibold mb-2">Fecha de Nacimiento</label>
-                        <input type="date" id="fechaNacimiento" class="form-control">
-                      </div>
-                      <div class="col-md-6">
-                        <label for="genero" class="block text-gray-700 font-semibold mb-2">Género</label>
-                        <select id="genero" class="form-control">
-                          <option value="M">Masculino</option>
-                          <option value="F">Femenino</option>
-                          <option value="O">Otro</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="mb-4">
-                      <label for="correo" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
-                      <input type="email" id="correo" class="form-control">
-                    </div>
-                    <div class="mb-4">
-                      <label for="celular" class="block text-gray-700 font-semibold mb-2">Celular</label>
-                      <input type="number" id="celular" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Agregar</button>
-                  </form>
-                </div>
-              </div>
+                  </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      <table datatable class="row-border hover">
+        <thead style="background-color: #044bb3; color:#FFF; border-radius: 20px !important;">
+          <tr>
+            <th>ID</th>
+            <th>NombreReporte</th>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2</td>
+            <td>radiografia de brazo</td>
+            <td>Laura Vargas</td>
+            <td>18/02/2023</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" title="Editar el reporte">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-success btn-sm" title="Aprobar y Enviar">
+                <i class="fa-solid fa-check-circle"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                <i class="fa-solid fa-trash"></i>
+              </button>&nbsp;
+              <!-- <button style="color:#044bb3" type="button" class="btn btn-sm" title="No iniciado">
+                <i class="fa-solid fa-face-frown"></i>
+              </button>&nbsp; -->
+               <button style="color:#aab605" type="button" class="btn btn-sm" title="Ver estado">
+                <i class="fa-solid fa-face-meh"></i>
+              </button>&nbsp;
+              <!--<button style="color:#04b31b" type="button" class="btn btn-sm" title="Completado">
+                <i class="fa-solid fa-face-smile"></i>
+              </button>&nbsp; -->
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>radiografia de brazo</td>
+            <td>santiago Cardenas</td>
+            <td>18/02/2023</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" title="Editar el reporte">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-success btn-sm" title="Aprobar y Enviar">
+                <i class="fa-solid fa-check-circle"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" title="Eliminar">
+                <i class="fa-solid fa-trash"></i>
+              </button>&nbsp;
+              <button style="color:#044bb3" type="button" class="btn btn-sm" title="No iniciado">
+                <i class="fa-solid fa-face-frown"></i>
+              </button>&nbsp;
+              <!-- <button style="color:#aab605" type="button" class="btn btn-sm" title="Ver estado">
+                <i class="fa-solid fa-face-meh"></i>
+              </button>&nbsp;
+              <button style="color:#04b31b" type="button" class="btn btn-sm" title="Completado">
+                <i class="fa-solid fa-face-smile"></i>
+              </button>&nbsp; -->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Esta tabla trae los datos del api -->
+      <!-- <table datatable class="row-border hover">
+        <thead style="background-color: #044bb3; color:#FFF; border-radius: 20px !important;">
+          <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Genero</th>
+            <th>NombreReporte</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let paciente_rep of Pacientes; let iControl=index">
+            <td>{{ paciente_rep.id }}</td>
+            <td>{{ paciente_rep.nombres }}</td>
+            <td>{{ paciente_rep.apellidos }}</td>
+            <td>{{ paciente_rep.genero }}</td>
+            <td>{{ paciente_rep.nombre_reporte }}</td>
+            <td>{{ paciente_rep.fecha_reporte }}</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" title="Editar el reporte" routerLink="/edit-reporte-paciente/{{ paciente_rep.id }}">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-success btn-sm" title="Aprobar y Enviar">
+                <i class="fa-solid fa-check-circle"></i>
+              </button>&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" title="Eliminar" (click)="borrarReporte(paciente_rep.id, iControl)">
+                <i class="fa-solid fa-trash"></i>
+              </button>&nbsp;
+              <button style="color:#044bb3" type="button" class="btn btn-sm" title="No iniciado">
+                <i class="fa-solid fa-face-frown"></i>
+              </button>&nbsp;
+              <!-- <button style="color:#aab605" type="button" class="btn btn-sm" title="Ver estado">
+                <i class="fa-solid fa-face-meh"></i>
+              </button>&nbsp;
+              <button style="color:#04b31b" type="button" class="btn btn-sm" title="Completado">
+                <i class="fa-solid fa-face-smile"></i>
+              </button>&nbsp; 
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
   </div>
-<table datatable class="row-border hover">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>First name</th>
-        <th>Last name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Foo</td>
-        <td>Bar</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Someone</td>
-        <td>Youknow</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Iamout</td>
-        <td>Ofinspiration</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Yoda</td>
-        <td>Skywalker</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Patrick</td>
-        <td>Dupont</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Barack</td>
-        <td>Obama</td>
-      </tr>
-      <tr>
-        <td>7</td>
-        <td>François</td>
-        <td>Holland</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>Michel</td>
-        <td>Popo</td>
-      </tr>
-      <tr>
-        <td>9</td>
-        <td>Chuck</td>
-        <td>Norris</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td>Simon</td>
-        <td>Robin</td>
-      </tr>
-      <tr>
-        <td>11</td>
-        <td>Louis</td>
-        <td>Lin</td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td>Zelda</td>
-        <td>Link</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
+  
