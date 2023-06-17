@@ -2,7 +2,7 @@
   <app-menu></app-menu>
   <div id="content" class="p-4 p-md-5 pt-5">
       <div class="d-flex justify-content-end">
-    <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Agregar Nuevo Reporte
       </button></div>
       
@@ -35,6 +35,10 @@
                           <div *ngIf="AddPatientForm.get('report').errors && AddPatientForm.get('report').dirty">
                             <p class="text-danger" *ngIf="AddPatientForm.get('report').hasError('required')">Este campo es requerido</p>
                           </div>
+                        </div>
+                        <div class="mb-4">
+                          <label for="formFile" class="form-label">Subir Radiografia</label>
+                          <input class="form-control" type="file" id="formFile">
                         </div>
                         <button type="submit" class="btn btn-primary w-100" [disabled]="AddPatientForm.invalid">Agregar</button>
                       </form>
