@@ -18,7 +18,7 @@ import { ConfiguracionComponent } from './components/configuracion/configuracion
 import { PersonalComponent } from './components/personal/personal.component';
 import { PatientReportsComponent } from './components/patient-reports/patient-reports.component';
 import { ConfiguracionPacienteComponent } from './components/configuracion-paciente/configuracion-paciente.component';
-
+import { NgxSelectModule } from 'ngx-select-ex';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { ConfiguracionPacienteComponent } from './components/configuracion-pacie
     AppRoutingModule,
     DataTablesModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
